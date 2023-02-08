@@ -37,8 +37,8 @@ public class MusicPlayer {
 
     ;
 
-    public void setSongList(Music music) {
-        songList.add(music);
+    public void setSongList(List<Music> songList) {
+        this.songList = songList;
     }
 
     public List<Music> getSongList() {
