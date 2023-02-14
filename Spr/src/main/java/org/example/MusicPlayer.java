@@ -1,8 +1,12 @@
 package org.example;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class MusicPlayer {
     private Music music;
 
@@ -15,6 +19,7 @@ public class MusicPlayer {
     public MusicPlayer() {
     }
 
+    @Autowired
     public MusicPlayer(Music music) {
         this.music = music;
     }
