@@ -1,27 +1,30 @@
 package org.example;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component
-public class ClassicalMusic implements Music {
-    private ClassicalMusic() {
+import java.util.ArrayList;
+import java.util.List;
 
+
+public class ClassicalMusic implements Music {
+    private List<String> listSong = new ArrayList<>();
+
+    {
+        listSong.add("first Classical Song");
+        listSong.add("second Classical Song");
+        listSong.add("third Classical Song");
     }
+
 
     public static ClassicalMusic getClassicalMusic() {
         return new ClassicalMusic();
     }
 
-    public void doInitMethod() {
-        System.out.println("initialization");
-    }
-
-    public void doDestMethod() {
-        System.out.println("destroing");
-    }
 
     @Override
-    public void getSong() {
-        System.out.println("This is  Classical Music");
+    public List<String> getSong() {
+        return listSong;
     }
 }
+

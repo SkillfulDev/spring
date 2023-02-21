@@ -1,12 +1,23 @@
 package org.example;
 
-public class RockMusic implements Music{
-    public void doInitMethod(){
-        System.out.println("Hello there");
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class RockMusic implements Music {
+    private List<String> listSong = new ArrayList<>();
+    {
+        listSong.add("first Rock song");
+        listSong.add("second Rock song");
+        listSong.add("third Rock song");
     }
 
+
     @Override
-    public void getSong() {
-        System.out.println("This is rock music");
+    public List<String> getSong() {
+
+     return listSong;
     }
 }

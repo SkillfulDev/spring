@@ -1,69 +1,40 @@
 package org.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-@Component
 public class MusicPlayer {
-    private Music music;
+    private List<Music> listMusic = new ArrayList<>();
 
-    private String name;
-
-    private int volume;
-
-    private List<Music> songList = new ArrayList<>();
-
-    public MusicPlayer() {
-    }
-
-    @Autowired
-    public MusicPlayer(Music music) {
-        this.music = music;
-    }
+    @Value("${musicPlayer.name}")
+    String name;
+    @Value("${musicPlayer.volume}")
+    int volume;
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
-        this.volume = volume;
+    public MusicPlayer(List<Music> listMusic) {
+        this.listMusic = listMusic;
     }
 
-    ;
-
-    public void setSongList(List<Music> songList) {
-        this.songList = songList;
-    }
-
-    public List<Music> getSongList() {
-        return songList;
-    }
-
-    public void setMusic(Music music) {
-        this.music = music;
-    }
-
-    public void playMusic() {
-        music.getSong();
-    }
-
-    public void playMusicList() {
-        for (Music music1 : songList) {
-            music1.getSong();
-        }
+    public void playSong(){
+        Random random = new Random();
+        int randomNumber = random.nextInt(3);
+        System.out.println(listMusic.get(randomNumber).getSong().get(randomNumber));
 
     }
 }
-
 
